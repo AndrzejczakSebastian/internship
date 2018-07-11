@@ -2,6 +2,9 @@ class Author < ActiveRecord::Base
   validates :name, :surname, presence: true
   validates :age, numericality: { only_integer: true, greater_than: 18 }
 
+  def fullname
+    "#{name} #{surname}"
+  end
 
   has_many :comment
   #has_many :author_post

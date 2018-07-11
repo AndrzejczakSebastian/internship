@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  validates :title, :content, presence: true
+  validates :title, :content, :author_id, presence: true
   validates :title, uniqueness: true
   validates :title, length: { maximum: 80 }
   validates :content, length: { in: 10..500 }
@@ -10,7 +10,7 @@ class Post < ActiveRecord::Base
   #has_many :authors, through: :author_post
   belongs_to :author
 
-  has_many :comment
+  has_many :comments
 
   # before_create :annotate_author
   #
